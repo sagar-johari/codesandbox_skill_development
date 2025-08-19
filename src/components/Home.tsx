@@ -1,15 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ui/ProductCard";
 import { ProductListing } from "../api/axios";
-
-type Product = {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-};
+import type { Product } from "../types/product";
 
 const Home = () => {
 const [products,setProduct]=useState<Product[]>([]);
@@ -51,6 +43,7 @@ const [isError,setisError]=useState(false);
         <>
         <div className="min-h-screen container ">
             <h1>Products</h1>
+            <button>Add Product</button>
             <div className="product_list_wrapper grid grid-cols-12">
             {products?.map((product)=>(
             <div className="col-span-3">
