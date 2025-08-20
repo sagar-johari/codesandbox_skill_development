@@ -1,11 +1,19 @@
 import type { Product } from "../../types/product";
 
 interface ProductType{
-    data:Product
+    data:Product;
+    isFavourite: boolean;
+    onToggleFavourite: () => void;
 }
-const ProductCard = ({ data }:ProductType) => {
+const ProductCard = ({ data, isFavourite, onToggleFavourite }:ProductType) => {
   return (
     <div className="product_card p-4">
+      <button
+        onClick={onToggleFavourite}
+        className="absolute top-2 right-2 text-2xl"
+      >
+        {isFavourite ? "❤️" : "🤍"}
+      </button>
       <img src={data.image} alt={data.title} className="h-32 w-full aspect-square object-contain" />
       <h2 className="font-bold text-lg">{data.title}</h2>
       <span>{data.category}</span>
